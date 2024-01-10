@@ -88,12 +88,61 @@ x = filterArr.filter(e => e % 2 == 0) // => [6, 8, 2, 2]
 
 const h = 5;
 
-let i = 0;
+function max() {
+    let max = -Infinity;
+    for (let i = 0; i < arguments.length; i++) {
+        if(arguments[i] > max) {
+            max = arguments[i]
+        }
+    }
 
-while (i <= 5) {
-    console.log("ok");
-
-    i++;
+    return max;
 }
 
+function sort() {
+
+    for (let i = 0; i < arguments.length; i++) {
+        for (let j = 0; j < arguments.length; j++) {
+            if(arguments[i] > arguments[j]) {
+                let tamp = arguments[i];
+                arguments[i] = arguments[j];
+                arguments[j] = tamp;
+            }
+            
+        }
+        
+    }
+   
+    return arguments;
+}
+
+const arrrr = sort(1,2,3,6,8,9)
+
+const news = []
+for (let i = 0; i < arrrr.length; i++) {
+   news.push(arrrr[i])
+}
+
+console.log(news);
+console.log(typeof news);
+console.log(news.reduce((acc, rel) => acc + rel ,0));
+
+console.log(arrrr);
+console.log(typeof arrrr)
+
+
+const addTwoNumbers = function(l1, l2) {
+    let newl1 = parseInt(l1.join(''));
+    let newl2 = parseInt(l2.join(''));
+
+
+    let arr3 = `${newl1 + newl2}`;
+
+    const final = Array.from(arr3, Number)
+
+   return final
+    
+};
+
+console.log(addTwoNumbers([1,2,3,9], [1,2,3]));
 

@@ -146,3 +146,5 @@ const addTwoNumbers = function(l1, l2) {
 
 console.log(addTwoNumbers([1,2,3,9], [1,2,3]));
 
+console.log([9,6,5,9,8,3].splice(4,1));
+

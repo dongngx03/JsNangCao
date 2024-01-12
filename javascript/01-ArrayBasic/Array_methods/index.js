@@ -148,3 +148,11 @@ console.log(addTwoNumbers([1,2,3,9], [1,2,3]));
 
 console.log([9,6,5,9,8,3].splice(4,1));
 
+// bổ sung thêm phần varible còn thiếu trong phần 2 
+
+// var , let, const 
+// Tổng thể: được khai báo lại , được gán lại giá trị , global-scope, block-scope, function-scope, hỗ trợ hosting
+// var:           v             ,        v             ,      v      ,     v      ,      v        ,        v
+// let:           x             ,        v             ,      x       ,     v      ,     v        ,        x
+// const:         x             ,        x             ,      x       ,     v      ,     v        ,        x
+

@@ -27,7 +27,8 @@ x = arr.indexOf();
 
 // 8. toString and join - Trả về mảng dưới dạng chuỗi 
 x = arr.toString();
-x = arr.join();
+x = arr.join(); // tách các mảng thành chuỗi theo điều kiện 
+// nếu như mà điều khiện là "" thành chuoix không có những dấu phẩy 
 
 // 9. Slice - lấy từ phần tử index thứ (tham số thứ nhất ) 
 // đến phần tử index  (tham số thứ 2 -1 ), lưu ý: nó tạo ra một mảng mới chứ không thao tác gì trên mảng cũ 
@@ -91,7 +92,7 @@ const h = 5;
 function max() {
     let max = -Infinity;
     for (let i = 0; i < arguments.length; i++) {
-        if(arguments[i] > max) {
+        if (arguments[i] > max) {
             max = arguments[i]
         }
     }
@@ -103,35 +104,36 @@ function sort() {
 
     for (let i = 0; i < arguments.length; i++) {
         for (let j = 0; j < arguments.length; j++) {
-            if(arguments[i] > arguments[j]) {
+            if (arguments[i] > arguments[j]) {
                 let tamp = arguments[i];
                 arguments[i] = arguments[j];
                 arguments[j] = tamp;
             }
-            
+
         }
-        
+
     }
-   
+
     return arguments;
 }
 
-const arrrr = sort(1,2,3,6,8,9)
+const arrrr = sort(1, 2, 3, 6, 8, 9)
 
 const news = []
 for (let i = 0; i < arrrr.length; i++) {
-   news.push(arrrr[i])
+    news.push(arrrr[i])
 }
 
 console.log(news);
 console.log(typeof news);
-console.log(news.reduce((acc, rel) => acc + rel ,0));
+console.log(news.reduce((acc, rel) => acc + rel, 0));
 
 console.log(arrrr);
 console.log(typeof arrrr)
 
 
-const addTwoNumbers = function(l1, l2) {
+// leetcode bài 2
+const addTwoNumbers = function (l1, l2) {
     let newl1 = parseInt(l1.join(''));
     let newl2 = parseInt(l2.join(''));
 
@@ -140,13 +142,13 @@ const addTwoNumbers = function(l1, l2) {
 
     const final = Array.from(arr3, Number)
 
-   return final
-    
+    return final
+
 };
 
-console.log(addTwoNumbers([1,2,3,9], [1,2,3]));
+console.log(addTwoNumbers([1, 2, 3, 9], [1, 2, 3]));
 
-console.log([9,6,5,9,8,3].splice(4,1));
+console.log([9, 6, 5, 9, 8, 3].splice(4, 1));
 
 // bổ sung thêm phần varible còn thiếu trong phần 2 
 
@@ -156,3 +158,114 @@ console.log([9,6,5,9,8,3].splice(4,1));
 // let:           x             ,        v             ,      x       ,     v      ,     v        ,        x
 // const:         x             ,        x             ,      x       ,     v      ,     v        ,        x
 
+
+
+// Object 
+
+const person = {
+    name: 'John Doe',
+    age: 30,
+    isAdmin: true,
+    address: {
+        street: '123 Main st',
+        city: 'Boston',
+        state: 'MA',
+    },
+    hobbies: ['music', 'sports'],
+};
+
+const newPerson = {
+    address: {
+        coords: {
+            lat: 42.9384,
+            lng: -71.3232,
+        },
+    },
+};
+
+x = person.name
+
+x = person.address.street
+
+x = person.hobbies[0]
+
+person.test = function () {
+    console.log(`he hello ${this.name}`);
+    console.log(this);
+}
+
+// khi mà sử dụng arraw funtion làm tham chiếu cho 1 object 
+// thì nó nếu như sử dụng từ khóa this thì nó sẽ không trỏ đến parent
+// mà nó trỏ đến global là window và ngược lại nếu dùng funtion(){}
+// thì sẽ trỏ đến được đối tượng cha 
+
+
+// sử dụng toán tử spread để nối object 
+
+const obj1 = { a: 1, b: 2 };
+const obj2 = { c: 3, d: 4 };
+
+// Spread operator
+const obj3 = { ...obj1, ...obj2 };
+// tương tự như trên 
+const obj4 = Object.assign({}, obj1, obj2);
+
+const todos = [
+    { id: 1, name: 'Buy Milk' },
+    { id: 2, name: 'Pickup kids from school' },
+    { id: 3, name: 'Take out trash' },
+];
+
+// lấy key object rồi ném chúng vào 1 mảng 
+
+x = Object.keys(todos[0]) // ['id', 'name']
+
+// lấy values object rồi ném nó vào 1 mảng 
+
+x = Object.values(todos[0]) // [1, 'Buy Milk']
+
+// áp dùng để lấy tất cả các key + phần tử  của tưng phần tử trong mảng todos
+x = todos.map(e => Object.entries(e))
+
+// check xem đối tượng chó thuộc tính này hay không 
+x = todos[0].hasOwnProperty('id') // => true / false
+
+
+// DESTRUCTURING 
+
+// mục đích của việc này chính là lấy ra một thuộc tính của object mà khong 
+// cần gọi đến cha của nó 
+
+const dong = {
+    name: "dong",
+    age: 20,
+}
+
+// thông thường muốn sử dụng ta lmaf như này 
+const name1 = dong.name;
+const age1 = dong.age;
+
+// giờ đây ta có thể sử dụng cách khác nhanh hơn như thế này 
+
+const { name, age } = dong
+
+// tương tự với mảng 
+const numbers = [23, 67, 33, 49, 52];
+
+const [first, second, ...rest] = numbers;
+
+console.log(first, second, rest);
+
+console.log(name);
+console.log(age);
+
+console.log(x);
+
+
+const fc1 = function() {
+    console.log(this);
+}
+
+const fc2 = () => {
+    console.log(this);
+}

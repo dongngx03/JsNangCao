@@ -33,7 +33,7 @@ const calcAverageHumanAge = (...dogAge) => {
     //2. 
     console.log('------------------------------');
     console.log('những chú chó trên 18 tuổi là :');
-    const dog18 =  arrDogAge[0].map((e, index) => {
+    const dog18 = arrDogAge[0].map((e, index) => {
         e > 2 && (e * 4) + 16 ? console.log(`chó số ${index + 1}`) : ""
     })
     console.log('------------------------------');
@@ -47,11 +47,68 @@ const calcAverageHumanAge = (...dogAge) => {
 
     console.log((arrDogMan / dog18.length).toFixed(1) + "tuổi");
 
-
-
 }
 
 calcAverageHumanAge(testData1);
 
+
 // Bài 3.4
+const dogs = [
+    { weight: 22, curFood: 250, owners: ['Alice', 'Bob'] },
+    { weight: 8, curFood: 200, owners: ['Matilda'] },
+    { weight: 13, curFood: 275, owners: ['Sarah', 'John'] },
+    { weight: 32, curFood: 340, owners: ['Michael'] }
+];
+
+//1. 
+
+// mức độ ăn nó nhiều hay ít 
+const dogOfQuantity = (dogs, ownerName) => {
+    const dogOfSarah = dogs.find(e => {
+        return e.owners.find(e => {
+            return e == `${ownerName}`
+        })
+    })
+
+    const { weight, curFood } = dogOfSarah
+    //weight ** 0.75 * 28
+
+    //2
+    const level = weight ** 0.75 * 28
+    level >= curFood 
+    ? console.log(`Con chó của bà ${ownerName} đớp nhiều hơn cho phép`)
+    : console.log(`Con chó của bà ${ownerName} đớp tiết kiệm quá`);
+
+    //3
+    // list các chủ của chú cho ăn quá nhiều 
+    const eatALot =
+        dogs.filter(e => e['curFood'] >= e['weight']** 0.75 * 28)
+            .map(e => e['owners'])
+            .flat()
+            .join(' and ')
+            + "cho đớp nhiều"
+
+    // list các chủ cho chó đớp tiết kiệm 
+    const eatALittle = 
+        dogs.filter(e => e['curFood'] < e['weight']** 0.75 * 28)
+            .map(e => e['owners'])
+            .flat()
+            .join(' and ')
+            + "cho đớp ít "
+    //4
+    const AllOwners = eatALot + " and " + eatALittle;
+    // => Matilda and Sarah and Johncho đớp nhiều and Alice and Bob and Michaelcho đớp ít 
+    
+    //5. 
+    console.log(AllOwners);
+    console.log(eatALot);
+    console.log(eatALittle);
+    console.log(dogOfSarah);
+}
+
+dogOfQuantity(dogs, 'Sarah')
+
+
+
+
 

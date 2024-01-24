@@ -269,3 +269,6 @@ const fc1 = function() {
 const fc2 = () => {
     console.log(this);
 }
+
+
+
